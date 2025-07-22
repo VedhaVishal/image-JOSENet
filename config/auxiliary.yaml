@@ -1,0 +1,31 @@
+# SSL parameters
+batch_size: 16 # Consider adjusting based on GPU memory and for a small dataset.
+dropout: 0.2
+dropout3d: 0
+epochs: 30 # For a mini-dataset, you might need more epochs, or fewer if it overfits quickly. Monitor validation loss.
+t_max: 100
+patience: 100 # Good for early stopping.
+lr: 0.001 # This might be high for a small dataset. Consider trying 0.001 or 0.0001 if training is unstable.
+eta_min: 0.002
+mixed_precision: True
+
+# UCF-Crime parameters
+interval: 1
+
+# HMDB51, UCF101 parameters
+# fps: 7.5 # This is already here, consistent with your frame extraction script
+
+# --- Dataset Configuration (ADDED / MODIFIED) ---
+dataset: 'UCF-Crime' # ADDED: Explicitly define the dataset name
+dataset_path: "D:/imageand/archive/JOSENet/datasets" # ADDED: Path to your extracted frames
+num_classes: 14 # ADDED: Total classes (13 anomaly + 1 normal)
+img_width: 224 # ADDED: Matches TARGET_DIM in your frame extraction script
+img_height: 224 # ADDED: Matches TARGET_DIM in your frame extraction script
+num_frames: 16 # ADDED: Common parameter for the number of frames per clip. Adjust if JOSENet uses a different name.
+
+# Tasks parameters
+expander_dimensionality: 8192 # VICReg
+expander_input_dim: 864 # VICReg
+lambd: 25
+mu: 25
+nu: 1

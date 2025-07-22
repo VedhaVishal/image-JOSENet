@@ -1,0 +1,24 @@
+# Supervised learning parameters
+interval: 4
+batch_size: 16 # Consider adjusting this (e.g., lower to 16 or 8) based on GPU memory and training stability for a small dataset.
+dropout: 0.2
+dropout3d: 0.2
+epochs: 30 # For a mini-dataset, you might need more epochs to converge, or fewer if it overfits quickly. Monitor validation loss.
+t_max: 30
+patience: 15 # Good for early stopping, helps prevent overfitting on small datasets.
+lr: 0.001 # This might be a bit high for a small dataset. Consider trying 0.001 or 0.0001 if training is unstable.
+eta_min: 0.001
+diff_lr_rgb: False
+diff_lr_flow: False
+mixed_precision: True
+coclr: False
+
+# --- Dataset Configuration (MODIFIED / ADDED) ---
+dataset: 'UCF-Crime' # Changed from 'RWF-2000'
+dataset_path: "D:/imageand/archive/JOSENet/datasets/ucf_crime_mini_jpg_frames" # ADDED: Path to your extracted frames
+num_classes: 14 # ADDED: Total classes (13 anomaly + 1 normal)
+img_width: 224 # ADDED: Matches TARGET_DIM in your frame extraction script
+img_height: 224 # ADDED: Matches TARGET_DIM in your frame extraction script
+num_frames: 16 # ADDED: This is a common parameter for the number of frames per clip. Adjust if JOSENet uses a different name (e.g., clip_length).
+
+fps: 7.5 # Consistent with your frame extraction script
